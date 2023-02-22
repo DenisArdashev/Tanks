@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 #include <SFML/Graphics.hpp>
 #include <cmath>
@@ -14,8 +14,8 @@
 #define DELETE_KEY 8
 #define ENTER_KEY 13
 #define ESCAPE_KEY 27
-//1- целый кирпич 2 - половинка кирпича сверху, 3 - половинка кирпича снизу, 4- половинка кирпича слева, 5- полокинка кирпича справа
-//6 - бетонный блок блок
+//1- С†РµР»С‹Р№ РєРёСЂРїРёС‡ 2 - РїРѕР»РѕРІРёРЅРєР° РєРёСЂРїРёС‡Р° СЃРІРµСЂС…Сѓ, 3 - РїРѕР»РѕРІРёРЅРєР° РєРёСЂРїРёС‡Р° СЃРЅРёР·Сѓ, 4- РїРѕР»РѕРІРёРЅРєР° РєРёСЂРїРёС‡Р° СЃР»РµРІР°, 5- РїРѕР»РѕРєРёРЅРєР° РєРёСЂРїРёС‡Р° СЃРїСЂР°РІР°
+//6 - Р±РµС‚РѕРЅРЅС‹Р№ Р±Р»РѕРє Р±Р»РѕРє
 using namespace  std;
 using namespace sf;
 
@@ -826,10 +826,10 @@ public:
 		double x = getX(), y = getY();
 		switch (getDir())
 		{
-		case 6: setDx(getSpeed()); setDy(0); break; // вправо
-		case 2: setDx(-getSpeed()); setDy(0); break; // влево
-		case 4: setDx(0); setDy(getSpeed()); break; // вниз
-		case 0: setDx(0); setDy(-getSpeed()); break; // вверх
+		case 6: setDx(getSpeed()); setDy(0); break; // РІРїСЂР°РІРѕ
+		case 2: setDx(-getSpeed()); setDy(0); break; // РІР»РµРІРѕ
+		case 4: setDx(0); setDy(getSpeed()); break; // РІРЅРёР·
+		case 0: setDx(0); setDy(-getSpeed()); break; // РІРІРµСЂС…
 		}
 		setSprite(1650 + getDir() * w, 520, w, h);	
 		x += getDx() * time;
@@ -887,9 +887,9 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 	{
 		if ((*iter)->getRect().intersects(p.getRect()))
 		{
-			if ((*iter)->getDx() > 0) // враг едет вправо
+			if ((*iter)->getDx() > 0) // РІСЂР°Рі РµРґРµС‚ РІРїСЂР°РІРѕ
 			{
-				if (p.getDy() < 0) //игрок едет вверх
+				if (p.getDy() < 0) //РёРіСЂРѕРє РµРґРµС‚ РІРІРµСЂС…
 				{
 					if ((*iter)->getX() + (*iter)->getH() - 1 > p.getX())
 					{
@@ -901,7 +901,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDx(0);
 					}
 				}
-				else if (p.getDy() > 0) // игрок едет вниз
+				else if (p.getDy() > 0) // РёРіСЂРѕРє РµРґРµС‚ РІРЅРёР·
 				{
 					if ((*iter)->getX() + (*iter)->getH() - 1 > p.getX())
 					{
@@ -913,7 +913,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDx(0);
 					}
 				}
-				else if (p.getDx() < 0) // игрок едет навстречу
+				else if (p.getDx() < 0) // РёРіСЂРѕРє РµРґРµС‚ РЅР°РІСЃС‚СЂРµС‡Сѓ
 				{
 					(*iter)->setDx(0);
 					(*iter)->setX(p.getX() - (*iter)->getW());
@@ -929,9 +929,9 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 					(*iter)->setDx(0);
 				}
 			}
-			else if ((*iter)->getDx() < 0) // враг едет влево
+			else if ((*iter)->getDx() < 0) // РІСЂР°Рі РµРґРµС‚ РІР»РµРІРѕ
 			{
-				if (p.getDy() < 0) //игрок едет вверх
+				if (p.getDy() < 0) //РёРіСЂРѕРє РµРґРµС‚ РІРІРµСЂС…
 				{
 					if ((*iter)->getX() < p.getX() + p.getH() - 1)
 					{
@@ -943,7 +943,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDx(0);
 					}
 				}
-				else if (p.getDy() > 0) // игрок едет вниз
+				else if (p.getDy() > 0) // РёРіСЂРѕРє РµРґРµС‚ РІРЅРёР·
 				{
 					if ((*iter)->getX() < p.getX() + p.getH() - 1)
 					{
@@ -955,7 +955,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDx(0);
 					}
 				}
-				else if (p.getDx() > 0) // игрок едет навстречу
+				else if (p.getDx() > 0) // РёРіСЂРѕРє РµРґРµС‚ РЅР°РІСЃС‚СЂРµС‡Сѓ
 				{
 					(*iter)->setDx(0);
 					(*iter)->setX(p.getX() + p.getW());
@@ -971,9 +971,9 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 					(*iter)->setDx(0);
 				}
 			}
-			if ((*iter)->getDy() > 0) // враг едет вниз
+			if ((*iter)->getDy() > 0) // РІСЂР°Рі РµРґРµС‚ РІРЅРёР·
 			{
-				if (p.getDx() < 0)// игрок едет влево
+				if (p.getDx() < 0)// РёРіСЂРѕРє РµРґРµС‚ РІР»РµРІРѕ
 				{
 					if ((*iter)->getY() + (*iter)->getH() - 1 > p.getY())
 					{
@@ -985,7 +985,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDy(0);
 					}
 				}
-				else if (p.getDx() > 0) //игрок двигается вправо
+				else if (p.getDx() > 0) //РёРіСЂРѕРє РґРІРёРіР°РµС‚СЃСЏ РІРїСЂР°РІРѕ
 				{
 					if ((*iter)->getY() + (*iter)->getH() - 1 > p.getY())
 					{
@@ -997,7 +997,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDy(0);
 					}
 				}
-				else if (p.getDy() < 0) // игрок едет навстречу
+				else if (p.getDy() < 0) // РёРіСЂРѕРє РµРґРµС‚ РЅР°РІСЃС‚СЂРµС‡Сѓ
 				{
 					(*iter)->setDy(0);
 					(*iter)->setY(p.getY() - (*iter)->getH());
@@ -1013,9 +1013,9 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 					(*iter)->setDy(0);
 				}
 			}
-			if ((*iter)->getDy() < 0) // враг едет вверх
+			if ((*iter)->getDy() < 0) // РІСЂР°Рі РµРґРµС‚ РІРІРµСЂС…
 			{
-				if (p.getDx() < 0) // игрок едет влево
+				if (p.getDx() < 0) // РёРіСЂРѕРє РµРґРµС‚ РІР»РµРІРѕ
 				{
 					if ((*iter)->getY() < p.getY() + p.getH() - 1)
 					{
@@ -1027,7 +1027,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDy(0);
 					}
 				}
-				else if (p.getDx() > 0)//игрок едет вправо
+				else if (p.getDx() > 0)//РёРіСЂРѕРє РµРґРµС‚ РІРїСЂР°РІРѕ
 				{
 					if ((*iter)->getY() < p.getY() + p.getH() - 1)
 					{
@@ -1039,7 +1039,7 @@ void chekColissionWithEnemy(list<Enemy*>& enemyList, list<Enemy*>::iterator& ite
 						(*iter)->setDy(0);
 					}
 				}
-				else if (p.getDy() > 0) // игрок едет навстречу
+				else if (p.getDy() > 0) // РёРіСЂРѕРє РµРґРµС‚ РЅР°РІСЃС‚СЂРµС‡Сѓ
 				{
 					(*iter)->setDy(0);
 					(*iter)->setY(p.getY() + p.getH());
@@ -1081,12 +1081,12 @@ bool isOther(User user)
 			readF >> login;
 			if (login.compare(user.login) == 0)
 			{
-				cout << "такой логин есть\n";
+				cout << "С‚Р°РєРѕР№ Р»РѕРіРёРЅ РµСЃС‚СЊ\n";
 				return false;
 			}
 		}
 		readF.close();
-		cout << "такого логина нет\n";
+		cout << "С‚Р°РєРѕРіРѕ Р»РѕРіРёРЅР° РЅРµС‚\n";
 		return true;
 	}
 	else
@@ -1094,7 +1094,7 @@ bool isOther(User user)
 		readF.close();
 		writeF.open("user.txt", ios::app);
 		writeF.close();
-		cout << "Нет такого файла, создали\n";
+		cout << "РќРµС‚ С‚Р°РєРѕРіРѕ С„Р°Р№Р»Р°, СЃРѕР·РґР°Р»Рё\n";
 		return true;
 	}
 
@@ -1131,12 +1131,12 @@ bool autorization(User user)
 			readF >> login >> pasword >> points;
 			if (pasword.compare(user.password) == 0)
 			{
-				cout << "пароль верный\n";
+				cout << "РїР°СЂРѕР»СЊ РІРµСЂРЅС‹Р№\n";
 				return true;
 			}
 			else
 			{
-				cout << "пароль неверный\n";
+				cout << "РїР°СЂРѕР»СЊ РЅРµРІРµСЂРЅС‹Р№\n";
 				return false;
 			}
 		}
@@ -1531,7 +1531,7 @@ void savePoint(User user)
 	{
 		for (size_t i = 0; i < users.size(); i++)
 		{
-			readF.seekg(0, ios::end);//смещаемся от начала до конца файла
+			readF.seekg(0, ios::end);//СЃРјРµС‰Р°РµРјСЃСЏ РѕС‚ РЅР°С‡Р°Р»Р° РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°
 			if (readF.tellg() > 0)
 			{
 				writeF << "\n";
@@ -1594,7 +1594,7 @@ void game(RenderWindow& win, User& user, bool& isGame)
 	gameOverMenu.setMenu(gameOveSprite);
 	Menu victoryMenu;
 	victoryMenu.setMenu(background);
-	Clock clock; // счётчик 	
+	Clock clock; // СЃС‡С‘С‚С‡РёРє 	
 	bool reload = false;
 	bool relodEnemy = true;
 	bool key;
@@ -1693,11 +1693,11 @@ void game(RenderWindow& win, User& user, bool& isGame)
 					{
 						if (isGameOver)
 						{
-							if (menuNum == 0) { isReplay = true; }//начать заново
+							if (menuNum == 0) { isReplay = true; }//РЅР°С‡Р°С‚СЊ Р·Р°РЅРѕРІРѕ
 						}
 						if (isVictory)
 						{
-							if (menuNum == 0) { isReplay = true; }//следующий раунд							
+							if (menuNum == 0) { isReplay = true; }//СЃР»РµРґСѓСЋС‰РёР№ СЂР°СѓРЅРґ							
 						}
 						if (menuNum == 1)
 						{
